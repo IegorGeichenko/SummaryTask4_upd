@@ -1,0 +1,29 @@
+<%@ page pageEncoding="utf-8" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/JFGrid.css"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/JFFormStyle-1.css"/>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script>
+	$(function() {
+		var pull = $('#pull');
+		menu = $('nav ul');
+		menuHeight = menu.height();
+
+		$(pull).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
+		});
+
+		$(window).resize(function() {
+			var w = $(window).width();
+			if (w > 320 && menu.is(':hidden')) {
+				menu.removeAttr('style');
+			}
+		});
+	});
+</script>

@@ -1,0 +1,44 @@
+<%@ page pageEncoding="utf-8" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
+<fmt:setLocale value="${currentLocale}"/>
+<fmt:setBundle basename="resources"/>
+
+<div class="wrap">
+	<div class="#footer">
+		<div class="copy">
+			<p class="link">
+				<span> © <fmt:message key="no.rights.reserved"/></span>
+			</p>
+		</div>
+		<div class="f_nav">
+			
+				<c:if test="${user != null}">
+				<c:choose>
+				<c:when test="${user.roleId == '1' }">
+					<ul class="menu">
+			     		<li><a href="${pageContext.request.contextPath}/admin/home"><fmt:message key="home"/></a></li>
+					</ul>
+						</c:when>
+						
+						<c:when test="${user.roleId == '2' }">
+					<ul class="menu">
+			     		<li><a href="${pageContext.request.contextPath}/manager/home"><fmt:message key="home"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/manager/bookingRequestProcess"><fmt:message key="current.booking.requests"/></a></li>
+					</ul>
+						</c:when>
+						
+						<c:when test="${user.roleId == '3' }">
+					<ul class="menu">
+						<li><a href="${pageContext.request.contextPath}/rooms"><fmt:message key="free.rooms"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/bookingRequest"><fmt:message key="booking.request"/></a></li>
+						
+						</ul>
+						</c:when>
+				</c:choose>
+				</c:if>
+				
+				<!-- start profile_details -->
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>

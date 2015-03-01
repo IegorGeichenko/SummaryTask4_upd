@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============================================================ Deployment 
+	Descriptor: web.xml ============================================================= -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>ST4Example</display-name>
+
+	<welcome-file-list>
+		<welcome-file>/login</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>ua.nure.geichenko.SummaryTask4.web.listener.ContextListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>ua.nure.geichenko.SummaryTask4.web.filter.LoginFilter</filter-class>
+		<init-param>
+			<param-name>excludeList</param-name>
+			<param-value>login;registration;logout;error</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>ua.nure.geichenko.SummaryTask4.web.filter.EncodingFilter</filter-class>
+
+		<init-param>
+			<param-name>requestEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>resources</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+		<param-value>ru</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ErrorServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.ErrorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ErrorServlet</servlet-name>
+		<url-pattern>/error</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.RegistrationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/registration</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>HomeServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.HomeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HomeServlet</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminHomeServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.admin.AdminHomeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminHomeServlet</servlet-name>
+		<url-pattern>/admin/home</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AllUsersServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.admin.AllUsersServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AllUsersServlet</servlet-name>
+		<url-pattern>/admin/allUsers</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagerHomeServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.manager.ManagerHomeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ManagerHomeServlet</servlet-name>
+		<url-pattern>/manager/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingRequestServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.BookingRequestServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookingRequestServlet</servlet-name>
+		<url-pattern>/bookingRequest</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingRequestProcessServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.manager.BookingRequestProcessServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookingRequestProcessServlet</servlet-name>
+		<url-pattern>/manager/bookingRequestProcess</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RoomsServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.RoomsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RoomsServlet</servlet-name>
+		<url-pattern>/rooms</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SortedFreeRoomsServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.SortedFreeRoomsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SortedFreeRoomsServlet</servlet-name>
+		<url-pattern>/sortedRooms</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ReservationServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.ReservationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ReservationServlet</servlet-name>
+		<url-pattern>/reservation</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ConfirmReservationServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.ConfirmReservationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConfirmReservationServlet</servlet-name>
+		<url-pattern>/confirmReservation</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ConfirmPaymentServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.ConfirmPaymentServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConfirmPaymentServlet</servlet-name>
+		<url-pattern>/confirmPayment</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ConfirmBookingRequestServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.ConfirmBookingRequestServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConfirmBookingRequestServlet</servlet-name>
+		<url-pattern>/confirmBookingRequest</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SuccessReservationServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.SuccessReservationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SuccessReservationServlet</servlet-name>
+		<url-pattern>/successReservation</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SuccessPaymentServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.SuccessPaymentServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SuccessPaymentServlet</servlet-name>
+		<url-pattern>/successPayment</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingRequestStateTransformerServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.BookingRequestStateTransformerServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookingRequestStateTransformerServlet</servlet-name>
+		<url-pattern>/successBooking</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RoomFinderServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.manager.RoomFinderServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RoomFinderServlet</servlet-name>
+		<url-pattern>/manager/roomFinder</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingRequestUpdatorServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.manager.BookingRequestUpdatorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookingRequestUpdatorServlet</servlet-name>
+		<url-pattern>/manager/bookingRequestUpdator</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserRequestsServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.UserRequestsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserRequestsServlet</servlet-name>
+		<url-pattern>/userRequests</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UsersBookingRequestsQueueServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.UsersBookingRequestsQueueServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UsersBookingRequestsQueueServlet</servlet-name>
+		<url-pattern>/userRequestsQueue</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserHomePageOrdersServlet</servlet-name>
+		<servlet-class>ua.nure.geichenko.SummaryTask4.web.controller.user.UserHomePageOrdersServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserHomePageOrdersServlet</servlet-name>
+		<url-pattern>/userOrders</url-pattern>
+	</servlet-mapping>
+	
+
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+
+</web-app>

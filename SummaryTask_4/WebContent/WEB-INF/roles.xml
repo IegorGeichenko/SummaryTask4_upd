@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security>
+	<constraint>
+		<url-pattern>.*/admin/.*</url-pattern>
+		<role>ADMIN</role>
+	</constraint>
+	<constraint>
+		<url-pattern>.*/manager/.*</url-pattern>
+		<role>MANAGER</role>
+	</constraint>
+</security>
